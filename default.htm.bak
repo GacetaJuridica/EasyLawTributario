@@ -205,7 +205,7 @@ function unCheckid(dato, hidden_){
 				//	q += ((q != "")?"&":"") + "[Field norma_id:"+norma_id+"*]";
 				//}
 
-/* +++				var nro_norma = $("#number").val();
+				var nro_norma = $("#number").val();
 				if (nro_norma != "")
 					q += ((q != "")?"&":"") + "[Field numero:"+nro_norma+"]";
 
@@ -228,7 +228,7 @@ function unCheckid(dato, hidden_){
 					q += ((q != "")?"&":"") + "[Field fecha_server_publicacion:<="+FechaFin+"]";
 					
 			*/		
-/*+++				var emisores = $("#emisor").val().split(",");
+				var emisores = $("#emisor").val().split(",");
 				if (emisores != "")
 				{
 					var emisores_qry="";
@@ -242,7 +242,7 @@ function unCheckid(dato, hidden_){
 					}
 					if (emisores_qry != "")
 						q += ((q != "")?"&":"") + emisores_qry;
-				}	+++*/
+				}	
 				
 // Retirado por mlugo,para quitar busqueda	por temas
 
@@ -616,22 +616,38 @@ select#tipos_norma{
 
 				<div id="busAvanzando" class="form-lineal collapse">	
 
-					<select  id="tipos_norma" class="form-control" style="margin-bottom: 5px;	">
+					<!--	<select  id="tipos_norma" class="form-control" style="margin-bottom: 5px;	">
 					  <option value="nothing" >-- Seleccione tipo --</option>
 					  <option value="">TODOS</option>
 					  <option value="EasyLawTributario/1589961">Normas Principales </option>
 					  <option value="EasyLawTributario/1247327">Legislaci&oacute;n</option>
 					  <option value="EasyLawTributario/1589958">Jurisprudencia de Observancia</option>
 					  <option value="EasyLawTributario/1589959">Pronunciamientos SUNAT</option>
-					  <option value="EasyLawTributario/1247372">Jurisprudencia relevante</option>
+					  <option value="EasyLawTributario/1247372">Jurisprudencia relevante</option> -->
 	
 					</select>	
+					<select  id="tipos_norma" class="form-control" style="margin-bottom: 5px;	">
+					  <option value="" >-- Seleccione tipo de norma --</option>
+					  <option value="CPP ">Constituci&oacute;n Pol&iacute;tica del Per&uacute;</option>
+					  <option value="L ">Ley</option>
+					  <option value="RLEG "> Resoluci&oacute;n Legislativa</option>
+					  <option value="DLEG ">Decreto Legislativo</option>
+					  <option value="DU ">Decreto de Urgencia</option>
+					  <option value="DL ">Decreto Ley</option>
+					  <option value="DS ">Decreto Supremo</option>
+					  <option value="RS ">Resoluci&oacute;n Suprema</option>
+					  <option value="RM ">Resoluci&oacute;n Ministerial</option>
+					  <option value="R ">Resoluci&oacute;n</option>
+					  <option value="RAD ">Resoluci&oacute;n Administrativa</option>
+					  <option value="D ">Directiva</option>
+					  <option value="EXP ">Expediente</option>
+					</select>	
 					
-			<!--		 <input type="text" class="form-control" id="number" placeholder=" N&uacute;mero">
+				 <input type="text" class="form-control" id="number" placeholder=" N&uacute;mero">
 					 
 					 <input type="text" class="form-control" id="anio" placeholder=" A&ntilde;o">
 					 
-					 <input type="text" class="form-control" id="emisor" placeholder=" Emisor">      -->
+					 <input type="text" class="form-control" id="emisor" placeholder=" Emisor">     
 					 
 				</div>			
 				
