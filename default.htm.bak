@@ -684,7 +684,7 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 								<input type="hidden" size="0" name="xhitlist_hc" value="[XML][Kwic,5]">
 								<input type="hidden" size="0" name="xhitlist_mh"	value="5000" />
 <!--								<input type="hidden" size="0" id="xhitlist_d" name="xhitlist_d" value=""> -->
-								<input type="hidden" size="0" id="xhitlist_d" name="xhitlist_d" value="EasyLawTributario">
+								<input type="hidden" size="0" id="xhitlist_d" name="xhitlist_d" value="">EasyLawTributario
 								<input type="hidden" size="0" name="xhitlist_xsl" value="xhitlist.xsl">
 								<input type="hidden" size="0" name="xhitlist_vpc" value="first"/>
                                 <input type="hidden" size="0" name="xhitlist_vps" value="10"/> 
