@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gaceta Penal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" language="javascript"></script> -->
+
+
+
+<!-- <link rel="stylesheet" type="text/css" href="#!-- #TEMPLATES:css/bootstrap.min.css --#">  -->
+<!-- <link href="#!-- #TEMPLATES:css/bootstrap.min.css --#" rel="stylesheet" type="text/css" />  -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="#!-- #TEMPLATES:style1.css --#">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+ <script src="#!-- #TEMPLATES:jquery.min3.js --#"></script>
+ <!-- script for bootstrap -->
+ <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 
+<!-- <script type="text/javascript" src="#!-- #TEMPLATES:bootstrap.min.js --#"></script> -->
+
+<!-- <link href="style_home.css" rel="stylesheet" media="all" type="text/css" /> -->
+<script type="text/javascript" src="#!-- #TEMPLATES:CLPSessionSaveSearchs.js --#"></script>
+
+<!-- <script type="text/javascript" src="#!-- #TEMPLATES:script.js --#"></script>  -->
+
+<script type="text/javascript" src="#!-- #TEMPLATES:find22.js --#"></script>
+
+
+<script type="text/javascript">
+
+var optVisi = 0;
+
+function allCollecciones(obj){
+// primero obtengo la referencia del campo donde se establece las base da datos
+	var campo = $_('xhitlist_d').value;	
+
+	if (obj.checked)
+		{
+			//campo = "legislacion, jurisprudencia, doctrina";
+			
+		campo = "" ;
+		/*Colections_.push("legislacion");
+		Colections_.push("jurisprudencia");
+		Colections_.push("doctrina");
+		campo= Colections_.join(',');*/
+		
+		// other 
+			var elements = document.getElementsByTagName("input");
+			for (i=0;i<elements.length;i++)
+			{
+				if (elements[i].type == "checkbox"){
+					elements[i].checked= true;
+				}
+		   }
+	}
+	else{
+			campo= "";
+			var elements = document.getElementsByTagName("input");
+			for (i=0;i<elements.length;i++)
+			{
+				if (elements[i].type == "checkbox"){
+					elements[i].checked= false;
+				}
+		   }		
+			
+		}
+}
+/////////////////////////////////////
+
+//////////////////////////////////////
+
+
+
+function elim_cookies()
+{
+    if (document.cookie != "")
+    {
+        if (confirm("Desea salir de la aplicacion?"))
+        {
+            var la_cookie = document.cookie.split("; ");
+            var fecha_fin = new Date();
+            fecha_fin.setDate(fecha_fin.getDate()-1);
+
+            for (i=0; i<la_cookie.length; i++)
+            {
+                var mi_cookie = la_cookie[i].split("=")[0];
+                var cookie_value = (la_cookie[i].split("=")[1] != null ? la_cookie[i].split("=")[1] : "");
+                document.cookie = mi_cookie+"="+cookie_value+";expires=" + fecha_fin.toGMTString()+"; path=/";
+            }
+            //document.write("Se han eliminado: " + la_cookie.length + " Cookies ")
+            //top.window.location = "http://dataonline.gacetajuridica.com.pe/clp/movil.asp";
+			window.location = "http://192.168.0.151/clp/login_infocivil.asp";
+            //window.parent.close();
+        }
+    }
+}
+
+
+
+			var emisores_exacto = false;
+
+
+/* Inicio roger */
+function colecciones(obj,dato){
+
+	var campo = $_('xhitlist_d');	// asigno el ID del Control del FOrmulario
+	if(!obj.checked)	{
+			unCheckid(dato, campo);
+	}else{
+			checkid(dato, campo);
+	}
+}
+
+function checkid(dato, hidden_){
+
+//	var campo = hidden_.value;
+	var campo = Colections_.push(dato);
+	campo = Colections_.join(',');
+
+	hidden_.value = campo;	
+}
+
+function $_(x){
+	return 	document.getElementById(x);
+}
+// Arrat de ka cibkecuibes d edatis,
+var Colections_ = new Array();
+Colections_.push("infocivil");
+// FUNCIONA QUE DESCHEA
+function unCheckid(dato, hidden_){
+	
+	if ( Colections_.indexOf(dato) > -1 ){
+		Colections_.splice(Colections_.indexOf(dato), 1);
+		hidden_.value = Colections_.join(',');
+	}
+	
+}
+
+/* Fin roger */			
+	
+	
+//////////////
+/////////////////*******
+/**********************/
+
+			function makeQuery()
+			{
+				/*top.frames.DocNav.total_hits=0;
+				top.frames.DocNav.current_hit=-1;*/
+						
+	//	top.frames[top.TOOLS_FRAME].closeToc();
+					//saveSearch(TMP_SEARCH_NAME);
+				
+				if (submitAdvQuery())
+				{
+/*					if ( top.ifPreloaoder > 0)	// verifico  q esta vairable este activa para poder llamar a ala function de Preloader
+					{
+						HITLISTX_FRAME_OBJ.goToPreloader();
+					}
+					top.ifPreloaoder++; // Aumentoel contrador de la vairble del preloader!
+*/						
+					//top.frames[top.TOOLS_FRAME].closeToc();
+//					top.toogleLayout();
+					return true;
+				}				
+				return false;
+			}
+
+		function submitAdvQuery()
+			{
+				var q = "";
+
+				//////////////////////////////////////////
+				// Campos: pegan cosas en q (query)     //
+				//////////////////////////////////////////
+								
+				//var tipos_norma = "";
+				//$.each($("#tipo_de_normas input[@type='checkbox']:checked"), function()
+				//{
+////				tipos_norma += ((tipos_norma != "")?"or":"") + "[Field tipo_norma:"+$(this).val()+"]";
+				//     tipos_norma += ((tipos_norma != "")?"or":"") + "[Field tipo_norma:'"+$(this).val()+"']";
+				//});
+				//q += ((q != "")?"&":"") + tipos_norma;
+
+
+				var tipos_norma = $("#tipos_norma").val();
+				if (tipos_norma != "")
+					q += ((q != "")?"&":"") + "[Field tipo_norma:"+tipos_norma+"]";
+				
+			/*	else
+
+					$.each($("#tipo_de_normas input[@type='checkbox']:checked"), function()
+						{
+				     tipos_norma += ((tipos_norma != "")?"or":"") + "[Field tipo_norma:'"+$(this).val()+"']";
+						});
+					q += ((q != "")?"&":"") + tipos_norma;				
+					*/
+				
+				//var norma_id = $("#norma_id").val();
+				//if (norma_id != "")
+				//{
+				//	norma_id = norma_id.replace(/\s|\.|\/|-|_/g, "\?");
+				//	q += ((q != "")?"&":"") + "[Field norma_id:"+norma_id+"*]";
+				//}
+
+				var nro_norma = $("#number").val();
+				if (nro_norma != "")
+					q += ((q != "")?"&":"") + "[Field numero:"+nro_norma+"]";
+
+				var anio_norma = $("#anio").val();
+				if (anio_norma.length > 2 && parseInt(anio_norma)<=1999)
+					anio_norma = anio_norma.substring(2);
+				if (anio_norma != "")
+					q += ((q != "")?"&":"") + "[Field anio:"+anio_norma+"]";
+			/*		
+				var estado = $("#Estado").val();
+				if (estado != "")
+					q += ((q != "")?"&":"") + "[Field estado:"+estado+"]";
+					
+				var FechaInicio = date2aaaammdd($("#FechaInicio").val());
+				if (FechaInicio != "")
+					q += ((q != "")?"&":"") + "[Field fecha_server_publicacion:>="+FechaInicio+"]";
+
+				var FechaFin = date2aaaammdd($("#FechaFin").val());
+				if (FechaFin != "")
+					q += ((q != "")?"&":"") + "[Field fecha_server_publicacion:<="+FechaFin+"]";
+					
+			*/		
+				var emisores = $("#emisor").val().split(",");
+				if (emisores != "")
+				{
+					var emisores_qry="";
+					for  (var i=0 ; i<emisores.length ; ++i)
+					{
+						var asterisco = "*";
+						if (emisores_exacto == true)
+							asterisco = "";
+						
+						emisores_qry += ((emisores_qry != "")?"or":"") + "[Field emisor:"+asterisco+emisores[i]+asterisco+"]";
+					}
+					if (emisores_qry != "")
+						q += ((q != "")?"&":"") + emisores_qry;
+				}
+				
+// Retirado por mlugo,para quitar busqueda	por temas
+
+//				var tema_sub = $("#Tema").val();
+// 				if (tema_sub != "")
+// 				q += ((q != "")?"&":"") + "[Field materias:*"+tema_sub+"*]or[Field areas:*"+tema_sub+"*]";
+					
+	/*			var Sumilla = $("#Sumilla").val();
+				if (Sumilla != "")
+				{
+					Sumilla = Sumilla.replace(/ó|ú|á|é|í|ó/g, "\?"); //
+					//alert("Sumilla: " +Sumilla);
+					q += ((q != "")?"&":"") + "[Field sumilla:*"+Sumilla+"*]";
+				}
+*/
+				//////////////////////////////////////////
+				// Campos generales                     //
+				//////////////////////////////////////////
+
+					
+				var text = $("#texto").val();
+				if (text != "")
+				{
+					text = text.replace(/ó|ú|á|é|í|ó/g, "\?"); //
+					text = text.replace(/-/g, "\_");
+					q += ((q != "")?"&":"") + text;
+					//q += ((q != "")?" or ":"") + "[Field keywords:"+text+"]";
+					// parametros de busqueda 
+						q += ((q != "")?" or ":"") + "[Field norma_id:*"+text+"*]";
+						q += ((q != "")?" or ":"") + "[Field keywords:"+text+"]";
+						q += ((q != "")?" or ":"") + "[Field sumilla:"+text+"]";					
+				}
+					
+				if (q == "")
+				{
+					alert("Debe completar al menos un campo del formulario de búsqueda");
+					return false;
+				}
+				//
+
+				//alert(top.NAME_CLASS_MENU);
+		//		if ( ($_('chk_legis').checked && $_('chk_jurisp').checked && $_('chk_Doctrina').checked) || ( !($_('chk_legis').checked) && !($_('chk_jurisp').checked )&& !($_('chk_Doctrina').checked)) )
+//					top.NAME_CLASS_MENU = 'mLegislacion';	//'mLegislacion';
+			//	else
+			//		top.NAME_CLASS_MENU = 'hitlist';	//'hitlist';					
+
+				//alert(top.NAME_CLASS_MENU);
+//				return;			
+
+//				saveSearch(TMP_SEARCH_NAME, DOC_FRAME_OBJ);
+				//$("#text").val("");//LIMPIO EL CAMPO DE BUSQUEDA LIBRE
+				
+				$("#xhitlist_q").val(q);
+				//top.countStart(); //Tiempo en MS que tarda la busqueda
+				$("#main_form").submit();
+				
+				return true;
+			}
+
+/*
+function submitQuery()
+{
+	var ui = document.ui_form;
+	var request = document.request_form;
+
+	if (ui.q.value.indexOf('[rank') != -1)
+	{
+		request.xhitlist_s.value = 'Relevance-Weight';
+	}
+	
+	request.xhitlist_q.value = ui.q.value;
+	//alert(request.xhitlist_q.value);
+	if (request.xhitlist_q.value != "")
+	{
+		//SetupQuery();
+		request.submit();
+		top.toogleLayout();
+	//	top.frames[top.TOOLS_FRAME].closeToc();
+		saveSearch(TMP_SEARCH_NAME);
+	}
+	else
+	{
+		alert("Ingrese algun criterio de busqueda.");
+	}
+}
+
+*/
+///////////////////****** More Script 03/03/2012
+			function date2aaaammdd(val)
+			{
+				if (val == null || val == "")
+					return val;
+					
+				var val_split = val.split("/");
+				var new_date = "";
+				for (var i=(val_split.length-1) ; i>-1 ; --i)
+				{
+					var item = val_split[i];
+					if (item.length == 1) item = "0"+item;
+					new_date += item;
+				}
+				return new_date;
+			}
+////***********==============
+function goSHowLegislacion(){
+
+	top.toogleLayout_Legislacion();	
+}
+
+////***********==============
+function goSHowJurisprudencia(){
+
+	top.toogleLayout_jusrip();	
+}			
+
+function goSHowDroctrina(){
+
+	top.toogleLayout_doctrina();	
+}		
+	
+	
+// Debugger Boyin
+$(document).ready(function(){
+//	saveSearch(TMP_SEARCH_NAME);
+//	alert(document.cookie);
+// change roger
+	//$("#text").focus();
+	$("#texto").focus(function(){
+		$("#myfoot").hide("slow");
+		//alert("hola");
+	// animacion 
+	  $( ".form_main h4" ).animate({    
+		marginTop: "0px"  
+	  }, 1000);
+	// other 
+	$( "#mySection" ).animate({    
+		marginTop: "110px"  
+	  }, 1000,function() {
+		// Animation complete.
+		$( "header" ).css("height","100");
+	  });
+
+  
+  
+	});
+	
+		$("#texto").focusout(function(){
+		$("#myfoot").show("slow");
+		//alert("hola");
+		// animacion 
+		  $( ".form_main h4" ).animate({    
+			marginTop: "15px"
+		  
+		  }, 1000);	
+
+		// other
+		$( "#mySection" ).animate({    
+			marginTop: "100px"  
+		  }, 1000);
+		  $( "header" ).animate({    
+			height: "100px"  
+		  }, 1000,function() {
+		// Animation complete.
+		$( "header" ).css("height","100");
+	  
+	});
+	
+	
+		});
+	/*
+	function ShowResumenMonth(cad)
+		{
+			
+			$("#myIframe").attr('src', cad);
+			
+		}
+		*/
+	
+});
+
+
+	function ShowResumenMonth(cad)
+	{
+		// seteo 
+		optVisi = 1;
+		var mobj;
+		$("#myIframe").attr('src', cad);
+		//var texto = $("span[field='norma_id']").text();
+		$("#btnFlow").css("display","none");
+				$("#myIframe").load(function () {
+					$("#referencia").html($(this.contentDocument).find("span[field='norma_id']").html());
+					  
+					  $(this.contentDocument).find("body").css("width", "90%").css("margin-left","0").css("margin-right", "0");
+					  $(this.contentDocument).find("body table td[bgcolor='#FDF5F4']").css("width", "30%").css("word-break","break-word");
+					// cambio de script
+		//				$(this.contentDocument).find("a[onclick*='openPopup']").attr("onclick","location.href=" + $(this.contentDocument).find("a[onclick*='openPopup']").attr("onclick").substring( $(this.contentDocument).find("a[onclick*='openPopup']").attr("onclick").search(/\(/i) + 1, $(this.contentDocument).find("a[onclick*='openPopup']").attr("onclick").search(/\)/i) - 1 ) + "'");
+				$(this.contentDocument).find("a[onclick*='openPopup']").each(function(i){
+									
+					$(this).attr("onclick", "location.href=" + $(this).attr("onclick").substring( $(this).attr("onclick").search(/\(/i) + 1, $(this).attr("onclick").search(/\)/i) - 1 ) + "'");
+				});
+				
+				//
+				var opt = $("#btnFlow");
+				var cerrar = $("#btnClose");
+				$(this.contentDocument).find("a[onclick]").click(function(){
+					function goma(){
+						opt.css("display","inline");
+						cerrar.css("display","none");
+					}
+					
+					goma();
+				});
+
+
+
+				// agregamos la equiteta
+			/*		var script = document.createElement( 'script' );
+					script.type = 'text/javascript';
+					script.innerHTML = 'function openPopup(title){alert(title);}';
+					$(this.contentDocument).contents().append(script);
+				*/
+
+
+			});
+		//	var texto = $("span[field='norma_id']").text();
+		//	$("#referencia").html(text);
+		
+		
+	}	
+	
+			// script for iPhone 
+			var native = window.webkit.messageHandlers.native;	
+
+			// script for call 
+			var clicks = 0;	
+				// iphone
+				function showIphoneToast(pin){
+					
+					var message = {"cmd":"increment","pin": pin,"close":"cerrar", "count":clicks,"callbackFunc":function(responseAsJSON){
+						var response = JSON.parse(responseAsJSON);
+						clicks = response['count']; /// la mac
+	
+						pin = response['pin'];
+
+					}.toString()}
+					native.postMessage(message)
+					}
+		
+
+// comunicacion con la APP
+function cerrarApp(){
+		var ua = navigator.userAgent.toLowerCase();
+		var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+		if(isAndroid) {
+		  Android.closeApp();
+		}else{
+		  showIphoneToast("");
+		}
+
+	//	Android.closeApp();
+	
+}
+
+
+</script>
+
+<style type="text/css">
+
+/*
+footer {
+ bottom: 27px;
+}
+*/
+
+.btn-prince {
+	width: 80%;
+	margin-bottom: 8px;
+}
+.miBold{
+	color: #333;
+}
+.form-lineal input {
+	width: 32%;
+	display: inline;
+}
+
+.scrollNext {
+	overflow-y: scroll;
+	-webkit-overflow-scrolling:touch;
+	height:440px; 
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+    <div class="container clearfix">
+        <h1 id="logo" style="margin-left: -5px;">
+            <img src="#!-- #IMAGES:logoPenal.png --#" alt="logo" />
+        </h1>
+        <nav id="toper">
+ 			  <a href="#!-- #TEMPLATES:default.htm --#" class="btn btn-sq-sm btn-danger linki">
+              <i class="glyphicon glyphicon-home"></i><br/>
+              Inicio
+            </a>
+            <a href="#" onclick="cerrarApp();" class="btn btn-sq-sm btn-danger linki">
+              <i class="glyphicon glyphicon-log-out"></i><br/>
+              Salir
+            </a>         
+
+        </nav>
+    </div>
+    <div class="clearfix">
+        <nav id="menus" style="display: none;">
+ 			<a href="#" class="btn btn-sq-sm btn-danger">
+              <i class="glyphicon glyphicon-chevron-left"></i><br/>
+              Acierto
+            </a>
+            <a href="#" class="btn btn-sq-sm btn-danger">
+              <i class="glyphicon glyphicon-chevron-right"></i><br/>
+              Acierto
+            </a> 
+            <a href="#" class="btn btn-sq-sm btn-danger">
+              <i class="glyphicon glyphicon-remove-sign"></i><br/>
+              Borrar
+            </a> 
+            <a href="#" class="btn btn-sq-sm btn-danger">
+              <i class="glyphicon glyphicon-circle-arrow-down"></i><br/>
+              Descarga
+            </a> 
+            <!--<a href="#" class="btn btn-sq-sm btn-danger">
+              <i class="glyphicon glyphicon-log-out"></i><br/>
+              Enviar Doc.
+            </a> -->
+                       
+        </nav>
+    </div>
+</header>
+<section id="mySection" style="margin-top: 80px">
+  <div class="container clearfix">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="form_main">
+             <!--   <h4 class="heading"><strong>Busqueda </strong> Rapida <span></span></h4> -->
+                <div class="form text-center">
+				<form name="ui_form" onsubmit="makeQuery(); return false;" >                
+                    <input type="text"  autocomplete="off" placeholder="Ingrese un texto a buscar.." value="" name="texto" id="texto" class="txt">
+
+				<div id="busAvanzando" class="form-lineal collapse">	
+
+					<select  id="tipos_norma" class="form-control" style="margin-bottom: 5px;	">
+					  <option value="" >-- Seleccione tipo de norma --</option>
+					  <option value="CPP ">Constituci&oacute;n Pol&iacute;tica del Per&uacute;</option>
+					  <option value="L ">Ley</option>
+					  <option value="RLEG "> Resoluci&oacute;n Legislativa</option>
+					  <option value="DLEG ">Decreto Legislativo</option>
+					  <option value="DU ">Decreto de Urgencia</option>
+					  <option value="DL ">Decreto Ley</option>
+					  <option value="DS ">Decreto Supremo</option>
+					  <option value="RS ">Resoluci&oacute;n Suprema</option>
+					  <option value="RM ">Resoluci&oacute;n Ministerial</option>
+					  <option value="R ">Resoluci&oacute;n</option>
+					  <option value="RAD ">Resoluci&oacute;n Administrativa</option>
+					  <option value="D ">Directiva</option>
+					  <option value="EXP ">Expediente</option>
+					</select>	
+					
+					 <input type="text" class="form-control" id="number" placeholder=" N&uacute;mero">
+					 
+					 <input type="text" class="form-control" id="anio" placeholder=" A&ntilde;o">
+					 
+					 <input type="text" class="form-control" id="emisor" placeholder=" Emisor">
+					 
+				</div>			
+				
+					
+                    <input type="reset" value="Limpiar" name="limpiar" class="txt2 m5">
+                     <input type="submit"  value="Buscar" name="submit" class="txt2 m5">
+					 <input type="button" data-toggle="collapse" value="B. Avanzada" data-target="#busAvanzando" style="background-color: #5CBED3; border-color: #5CBED3;"  class="txt5 m5" />
+				<script>
+				//document.write(screen.width + " - " + screen.height);
+var txt = "";
+txt += "<p>Browser CodeName: " + navigator.appCodeName + "</p>";
+txt += "<p>Browser Name: " + navigator.appName + "</p>";
+txt += "<p>Browser Version: " + navigator.appVersion + "</p>";
+txt += "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>";
+txt += "<p>Browser Language: " + navigator.language + "</p>";
+txt += "<p>Browser Online: " + navigator.onLine + "</p>";
+txt += "<p>Platform: " + navigator.platform + "</p>";
+txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
+// document.write(txt);				
+				//	document.write(Android.getMac());
+				
+				  
+				</script>
+					 
+
+                </form>
+					
+					<form name="main_form" id="main_form" action="#!-- #EXECUTIVE:SCRIPT_NAME --#" method="get" >
+								<input type="hidden" size="0" name="f" value="xhitlist">
+								<input type="hidden" size="0" name="xhitlist_q" id="xhitlist_q" value="">
+								<input type="hidden" size="0" name="xhitlist_x"	value="Advanced">
+								<input type="hidden" size="0" name="xhitlist_s"	value="relevance-weight"|"Field:fecha_publicacion,DESC">
+								<input type="hidden" size="0" name="xhitlist_hc" value="[XML][Kwic,5]">
+								<input type="hidden" size="0" name="xhitlist_mh"	value="5000" />
+								<input type="hidden" size="0" id="xhitlist_d" name="xhitlist_d" value="Infopenal">
+								<input type="hidden" size="0" name="xhitlist_xsl" value="xhitlist.xsl">
+								<input type="hidden" size="0" name="xhitlist_vpc" value="first"/>
+                                <input type="hidden" size="0" name="xhitlist_vps" value="10"/> 
+								<input type="hidden" size="0" name="xhitlist_sel" value="title;path;relevance-weight;content-type;home-title;hit-context;Field:tipo_norma;Field:estado;Field:emisor;Field:fecha_publicacion;Field:fecha_server_publicacion;Field:tipo_coleccion" />
+							</form>				
+            </div>
+            </div>
+            </div>
+</div>
+</div>
+</section>
+<section class="controls-two" style="">
+	  <div class="container">
+		  <div class="row">
+				<div class="col-xs-12 text-center" >
+				
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			  <div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+				  <h4 class="panel-title">
+					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					  C&oacute;digos
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+				  <div class="panel-body">
+						<ul class="list-group">
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=168321 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">C&oacute;digo Penal</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=48759 --#');" data-target="#myModal" data-toggle="modal" class="miBold">C&oacute;digo Procesal Penal de 2004</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=204484 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">C&oacute;digo de Procedimientos Penales</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=168320 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">C&oacute;digo Procesal Penal de 1991</a></li>
+					      <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=204420 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">C&oacute;digo de Ejecuci&oacute;n Penal</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=48539 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">C&oacute;digo Penal Militar Policial</a></li>
+
+						</ul>
+				  </div>
+				</div>
+			  </div>
+			  <div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTwo">
+				  <h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					  Principales Normas
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				  <div class="panel-body">
+				  
+						<ul class="list-group">
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=646405 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Ley contra el lavado de activos</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=198019 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Ley Penal Tributaria</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=229157 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Ley de Delitos Aduaneros</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=204398 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Ley antiterrorista</a></li>
+					      <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=1116257 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Ley de Delitos Inform&aacute;ticos</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=1106154 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Ley Contra el Crimen Organizado</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=204467 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Proceso Penal Sumario</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=204007 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Ley de Procedimiento en casos de faltas</a></li>	
+						 <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=203992 --#');" data-target="#myModal" data-toggle="modal"  class="miBold">Ley sobre conclusi&oacute;n anticipada</a></li>							  
+
+						</ul>					
+				  </div>
+				</div>
+			  </div>
+			  <div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingThree">
+				  <h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					  Plenos Jurisdiccionales
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+				  <div class="panel-body">
+						<ul class="list-group">
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=1317778 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios Extraordinario 2016</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=1315300 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2015</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=773161 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios Extraordinario 2012</a></li>
+						  
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=1210720 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2012</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=1082394 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2011</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=691014 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2010</a></li>
+					      <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=691015 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2009</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=690994 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2008</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=773255 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2007</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=773158 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2006</a></li>
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#" onclick="javascript:ShowResumenMonth('#!-- #id=1082399 --#');" data-target="#myModal" data-toggle="modal"   class="miBold">Acuerdos Plenarios 2005</a></li>
+						  
+						</ul>						
+				  </div>
+				</div>
+			  </div>
+			</div>
+
+						
+				</div>		
+		  </div>
+
+
+
+
+	 
+    <div class="row">
+		<div class="col-md-4 text-left" style="border-top: 1px solid #ccc; margin:0 auto; margin-top:2px; width: 80%">  
+
+			 <i class="glyphicon glyphicon-indent-left"></i> <input type="button" value="Lista de Contenidos" onclick='location.href="#!-- #TEMPLATES:contents-frame.htm --#"' name="lista" class="txt2" />
+		</div>
+	</div>		
+	</div>
+</section>
+
+<footer id="myfoot">
+  <div class="container">
+    <h5 class="text-center">Software Penal - Gaceta Jur&iacute;dica S.A. - Todos los derechos reservados 2016</h5>
+    <!-- <h5 class="text-center">Web: www.gacetajuridica.com.pe - Email: legal@gacetajuridica.com.pe</h5> -->
+
+  </div>
+</footer>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal"  role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-xs" role="document">
+    <div class="modal-content">
+     <div class="modal-header text-center">
+		<span id="referencia"></span> <br>
+		<!-- <input type="button" id="btnbusque" value="Buscar" class="btn btn-success"  onclick="show();" /> -->
+		<button type="button" id="btnbusque" class="btn btn-success" onclick="show();"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+		<button type="button" class="btn btn-danger" id="btnClose" data-dismiss="modal">Cerrar</button>
+		<button type="button" class="btn btn-info" style="display: none;" id="btnFlow" onclick="history.back();$(this).css('display','none');$('#btnClose').css('display','inline');">Atr&aacute;s</button>
+       <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Titulo Normal</h4>  -->
+      </div> 
+      <div class="modal-body scrollNext" >
+			<iframe style="height:15040px; width:auto; margin-top: 11px; overflow-y: auto;" id="myIframe" name="myIframe"  src="about:blank" marginheight="20" marginwidth="10" frameborder="0" ></iframe>
+      </div>
+      <!--<div class="modal-footer">
+       
+        
+      </div> -->
+    </div>
+  </div>
+</div>
+
+			   
+			   
+			   
+			                   <script type="text/javascript">
+							   /*
+// Create the DIV
+var findwindow = document.createElement("div");
+create_div();
+
+// over variable is whether mouse pointer is over the DIV to move
+var over = 0;
+
+// Object to hold findwindow for MouseMove
+var objDiv = null;
+
+// ID of DIV for MouseMove functions
+var DivID = null;
+
+var test = document.getElementById('test');
+
+///
+	if (ie) 
+	{	
+		document.getElementById('btnbusque').style.width = '190px';
+		document.getElementById('btnbusque').value = 'Pulse CTRL + F para Buscar';	
+		document.getElementById('btnbusque').onclick = '';
+	}
+	*/
+				
+				
+				</script>
+	
+
+
+
+
+
+</body>
+</html>
