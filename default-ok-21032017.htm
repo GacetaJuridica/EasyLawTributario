@@ -29,88 +29,6 @@
 
 
 <script type="text/javascript">
-	
-	
-    $(document).ready(function(){
-			
-		try{
-	
-
-        $.ajax({
-        	url:'http://190.102.143.215/logic_adminPubliCont/index.php?/tipo_cambio',
-        	data:{"vcon":"n" },
-        	type:"POST",
-        	dataType:"json",
-			
-        	beforeSend:function(){
-        		//Android.showDialog("antes");                                       //load inicio
-        	},
-        	success:function(data){
-        		vari=0;       		  	
-            	
-            /**/
-				$.each(data , function(i, item) {            				    
-					/// indicadores
-					
-
-					$("#titcambio").html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha:&nbsp;'+item.dia_tcnac+"/"+item.mes_tcnac+"/"+item.anho_tcnac );
-
-					$("#zdolarc").html('<font size="2px">C: </font>'+item.val_c_tcnac);
-					$("#zeuroc").html('<font size="2px">C: </font>'+item.c_euro);
-
-					$("#zdolarv").html('<font size="2px">V: </font>'+item.val_v_tcnac);
-					$("#zeurov").html('<font size="2px">V: </font>'+item.v_euro);
-					
-				});                      
-                                                   
-        	}/*,
-        	error:function(xhr, status, error){
-        		//$("#sms").val("error:"+xhr );
-				
-        		//Android.showDialog("error");
-        	},*/
-			
-                        
-		});
-		
-		}catch(ex){
-		
-			Android.showDialog("error: "+ ex.description);
-      
-		}
-
-	
-
-		
-		
-
-
-	});
-
-
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
 
 var optVisi = 0;
 
@@ -489,13 +407,7 @@ $(document).ready(function(){
 	
 });
 
-	function ShowResumenMonth2(cad){
-		
-		
-		
-	}
-	
-	
+
 	function ShowResumenMonth(cad, bool)
 	{
 		// seteo 
@@ -1392,143 +1304,6 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 				  </div>
 				</div>
 			  </div>
-			  
-						
-					<!-- ////// Ini: SERVIR /////-->
-						<div class="panel panel-default">
-							
-							<!-- ******** header *********  -->
-							<div class="panel-heading" role="tab" id="heading30">
-							  <h4 class="panel-title">
-								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse30" aria-expanded="true" aria-controls="collapse30">
-									Vencimientos tributarios
-								</a>
-							  </h4>
-							</div>
-							<!-- ******** body *********  -->						
-							<div id="collapse30" class="panel-collapse collapse " role="tabpanel" aria-labelledby="heading30">
-								<div class="panel-body">
-							  
-									<!-- ************ contenido ************ -->
-									<ul class="list-group">				
-									 
-										<li class="list-group-item text-left">
-											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
-											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/VENCIMIENTOS_DE_TRIBUTOS_MUNICIPALES.pdf"  >Vencimiento de Tributos Municipales</a>
-										</li>
-										<li class="list-group-item text-left">
-											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
-											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONOGRAMA_DE_PRECIOS_DE_TRANSFERENCIA.pdf"  >Cronograma de Precios de Transferencia</a>
-										</li>
-										<li class="list-group-item text-left">
-											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
-											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONOGRAMA_DE_LA_DAOT.pdf"  >Cronograma de la DAOT</a>
-										</li>
-										<li class="list-group-item text-left">
-											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
-											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONCRONOGRAMA_PARA_EL_PAGO_DEL_ITF.pdf"  >Cronograma para el pago del ITF</a>
-										</li>
-										<li class="list-group-item text-left">
-											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
-											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONOGRAMA_DE_OBLIGACIONES_LABORALES.pdf"  >Cronograma de obligaciones laborales</a>
-										</li>
-										<li class="list-group-item text-left">
-											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
-											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONOGRAMA_DE_OBLIGACIONES_MENSUALES.pdf"  >Cronograma de obligaciones mensuales</a>
-										</li>
-										<li class="list-group-item text-left">
-											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
-											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/PLAZO_MaXIMO_DE_PRESENTACIoN_DE_LOS_ESTADOS_FINANCIEROS_INTERMEDIOS.pdf"  >Plazo m&aacute;ximo de presentaci&oacute;n de los estados financieros intermedios</a>
-										</li>
-										<!--	
-										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
-										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1310686 --#', false);"></a></li>
-										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
-										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1311416 --#', false);"></a></li>
-										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
-										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1316323 --#', false);"></a></li>
-										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
-										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1313152 --#', false);"></a></li>
-										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
-										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318520 --#', false);"></a></li>
-										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
-										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318520 --#', false);"></a></li>
-										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
-										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318520 --#', false);"></a></li>
-										-->
-													
-									  
-									</ul>
-									
-								</div>
-							  
-							</div>
-						</div>
-						<!-- ////// Fin: SERVIR /////-->
-			  
-				
-						<!-- ////// Ini: indicadores /////-->
-						<div class="panel panel-default" >
-							
-							<!-- ******** header *********  -->
-							<div class="panel-heading" role="tab" id="headingOne1">
-							  <h4 class="panel-title">
-								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
-									Tipo de cambio
-								</a>
-							  </h4>
-							</div>
-							<!-- ******** body *********  -->						
-							<div id="collapseOne1" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne1">
-								<div class="panel-body">							  
-									<!-- ************ contenido ************ -->
-									
-									<ul class="list-group">													 
-										<!-- ini: 1 -->
-										<li class="list-group-item text-left">
-											<div class="row" style="margin-bottom: 8px;text-align: left;">
-											<span>&nbsp;&nbsp;&nbsp;Tipo de Cambio</span>
-											
-											<hr style="border: 1px dotted #dddddd;margin-top:4px;margin-bottom:5px;  ">
-											<span id="titcambio"> </span><br/>
-												<div class="col-xs-12">
-													<div class="row">
-														<div class="col-xs-3"><h4 style="color: green">Dolar: </h4></div>
-														<div class="col-xs-4"><h4 id="zdolarc"><h4></div>
-														<div class="col-xs-5"><h4 id="zdolarv"><h4></div>
-													</div>
-													
-												</div>
-												<div class="col-xs-12">
-													<div class="row">
-														<div class="col-xs-3"><h4 style="color: #FF4289">Euro: </h4></div>
-														<div class="col-xs-4"><h4 id="zeuroc"><h4></div>
-														<div class="col-xs-5"><h4 id="zeurov"><h4></div>
-													</div>
-													
-												</div>
-
-											</div>
-
-										</li>
-										
-
-									</ul>
-								</div>
-							</div>
-
-						</div>						
-						<!-- ////// Fin: indicadores /////-->
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
 			</div>
 
 						
@@ -1572,7 +1347,6 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
         <h4 class="modal-title" id="myModalLabel">Titulo Normal</h4>  -->
       </div> 
       <div class="modal-body scrollNext" >
-		
 			<iframe style="height:15040px; width:auto; margin-top: 11px; overflow-y: auto;" id="myIframe" name="myIframe"  src="about:blank" marginheight="20" marginwidth="10" frameborder="0" ></iframe>
       </div>
       <!--<div class="modal-footer">
