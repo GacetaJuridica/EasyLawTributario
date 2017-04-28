@@ -29,6 +29,88 @@
 
 
 <script type="text/javascript">
+	
+	
+    $(document).ready(function(){
+			
+		try{
+	
+
+        $.ajax({
+        	url:'http://190.102.143.215/logic_adminPubliCont/index.php?/tipo_cambio',
+        	data:{"vcon":"n" },
+        	type:"POST",
+        	dataType:"json",
+			
+        	beforeSend:function(){
+        		//Android.showDialog("antes");                                       //load inicio
+        	},
+        	success:function(data){
+        		vari=0;       		  	
+            	
+            /**/
+				$.each(data , function(i, item) {            				    
+					/// indicadores
+					
+
+					$("#titcambio").html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha:&nbsp;'+item.dia_tcnac+"/"+item.mes_tcnac+"/"+item.anho_tcnac );
+
+					$("#zdolarc").html('<font size="2px">C: </font>'+item.val_c_tcnac);
+					$("#zeuroc").html('<font size="2px">C: </font>'+item.c_euro);
+
+					$("#zdolarv").html('<font size="2px">V: </font>'+item.val_v_tcnac);
+					$("#zeurov").html('<font size="2px">V: </font>'+item.v_euro);
+					
+				});                      
+                                                   
+        	}/*,
+        	error:function(xhr, status, error){
+        		//$("#sms").val("error:"+xhr );
+				
+        		//Android.showDialog("error");
+        	},*/
+			
+                        
+		});
+		
+		}catch(ex){
+		
+			Android.showDialog("error: "+ ex.description);
+      
+		}
+
+	
+
+		
+		
+
+
+	});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
 
 var optVisi = 0;
 
@@ -407,7 +489,13 @@ $(document).ready(function(){
 	
 });
 
-
+	function ShowResumenMonth2(cad){
+		
+		
+		
+	}
+	
+	
 	function ShowResumenMonth(cad, bool)
 	{
 		// seteo 
@@ -629,19 +717,59 @@ select#tipos_norma{
 					</select>	-->
 					<select  id="tipos_norma" class="form-control" style="margin-bottom: 5px;	">
 					  <option value="" >-- Seleccione tipo de norma --</option>
-					  <option value="CPP ">Constituci&oacute;n Pol&iacute;tica del Per&uacute;</option>
-					  <option value="L ">Ley</option>
-					  <option value="RLEG "> Resoluci&oacute;n Legislativa</option>
-					  <option value="DLEG ">Decreto Legislativo</option>
-					  <option value="DU ">Decreto de Urgencia</option>
-					  <option value="DL ">Decreto Ley</option>
-					  <option value="DS ">Decreto Supremo</option>
-					  <option value="RS ">Resoluci&oacute;n Suprema</option>
-					  <option value="RM ">Resoluci&oacute;n Ministerial</option>
-					  <option value="R ">Resoluci&oacute;n</option>
-					  <option value="RAD ">Resoluci&oacute;n Administrativa</option>
-					  <option value="D ">Directiva</option>
-					  <option value="EXP ">Expediente</option>
+					   <option value="A ">Acuerdo</option>
+					   <option value="AD ">Acuerdo de Directorio</option>
+					   <option value="AR ">Acuerdo Regional</option>
+					   <option value="ADIV ">Auto Divisional</option>
+					   <option value="C">Carta</option>
+					   <option value="CCI  ">Carta Circular</option>
+					   <option value="CIR ">Circular</option>
+					   <option value="COM ">Comunicado</option>
+					   <option value="CPP ">Constitucion Politica Del Peru</option>
+					   <option value="CONVINT ">Convenio Internacional</option>
+					   <option value="CONVOIT ">Convenio Oit</option>
+					   <option value="DECISION ">Decisi&oacute;n Andina</option>
+					   <option value="DEC ">Decreto</option>
+					   <option value="DA ">Decreto de Alcaldia</option>
+					   <option value="DU ">Decreto de Urgencia</option>
+					   <option value="DER ">Decreto Ejecutivo Regional</option>
+					   <option value="DLEG ">Decreto Legislativo</option>
+					   <option value="DL ">Decreto Ley</option>
+					   <option value="DR ">Decreto Regional</option>
+					   <option value="DS ">Decreto Supremo</option>
+					   <option value="DSE ">Decreto Supremo Extraordinario</option>
+					   <option value="D ">Directiva</option>
+					   <option value="E ">Edicto</option>
+					   <option value="EXP ">Expediente</option>
+					   <option value="INF ">Informe</option>
+					   <option value="INS ">Instructivo</option>
+					   <option value="INT ">Interpretacion</option>
+					   <option value="INV ">Investigacion</option>
+					   <option value="L ">Ley</option>
+					   <option value="LC ">Ley Constitucional</option>
+					   <option value="LR ">Ley Regional</option>
+					   <option value="MAND ">Mandato</option>
+					   <option value="NORMA">Norma</option>
+					   <option value="OF ">Oficio</option>
+					   <option value="OCI ">Oficio Circular</option>
+					   <option value="O ">Ordenanza</option>
+					   <option value="OR ">Ordenanza Regional</option>
+					   <option value="PriCamNorm ">Principales Cambios Normativos</option>
+					   <option value="QUEJA ">QUEJA</option>
+					   <option value="REC ">Recomendaci&oacute;n</option>
+					   <option value="REG ">Regulaci&oacute;n</option>
+					   <option value="R ">Resoluci&oacute;n</option>
+					   <option value="RAD ">Resoluci&oacute;n Administrativa</option>
+					   <option value="RC ">Resoluci&oacute;n Cambiaria</option>
+					   <option value="RA ">Resoluci&oacute;n de Alcald&iacute;a</option>
+					   <option value="RD ">Resoluci&oacute;n Directoral</option>
+					   <option value="RE ">Resoluci&oacute;n Ejecutiva</option>
+					   <option value="RJ ">Resoluci&oacute;n Jefatural</option>
+					   <option value="RLEG ">Resoluci&oacute;n Legislativa</option>
+					   <option value="RLR "> Resoluci&oacute;n Legislativa Regional</option>
+					   <option value="RM "> Resoluci&oacute;n Ministerial</option>
+					   <option value="RS ">Resoluci&oacute;n Suprema</option>
+					   <option value="RVM ">Resoluci&oacute;n Vice Ministerial</option>
 					</select>	
 					
 				 <input type="text" class="form-control" id="number" placeholder=" N&uacute;mero">
@@ -715,6 +843,115 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 						<ul class="list-group">
 						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#uno" data-toggle="collapse"   class="miBold2">NIC/NIIF</a></li>
 							<ul class="list-group collapse colorBlack" id="uno">
+							
+							<!-- sub lista BEGIN -->
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt text-primary"></span> <a href="#g_tres" data-toggle="collapse"   class="miBold2"> NIC/NIIF versi&oacute;n 2016</a> <span class="label label-success">Nuevo</span></li>
+							   <ul class="list-group collapse colorBlack" id="g_tres">								
+								
+							<!-- sub lista BEGIN -->
+								 <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322329 --#', false);">Marco Conceptual para la Informaci&oacute;n Financiera </a></li>
+								 <!-- <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322160 --#', false);">Plan Contable General Empresarial</a></li> -->
+								 
+								 <li class="list-group-item text-left"><span class="glyphicon glyphicon-tasks text-success"></span> <a href="#2016_uno" data-toggle="collapse"   class="miBold2">NIC 2016</a></li>
+								  <ul class="list-group collapse colorBlack" id="2016_uno">
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322328 --#', false);">NIC 1 Presentaci&oacute;n de Estados Financieros </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322327 --#', false);">NIC 2 Inventarios </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322326 --#', false);">NIC 7 Estado de Flujos de Efectivo </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322325 --#', false);">NIC 8 Pol&iacute;ticas Contables, Cambios en las Estimaciones Contables y Errores </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322324 --#', false);">NIC 10 Hechos Ocurridos Despu&eacute;s del Periodo sobre el que se Informa </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322323 --#', false);">NIC 12 Impuesto a las Ganancias </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322322 --#', false);">NIC 16 Propiedades, Planta y Equipo </a></li>
+									<!-- <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697199 --#', false);">NIC 17 Arrendamientos </a></li> -->
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322318 --#', false);">NIC 19 Beneficios a los Empleados </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322317 --#', false);">NIC 20 Contabilizaci&oacute;n de las Subvenciones del Gobierno e Informaci&oacute;n a Revelar sobre Ayudas Gubernamentales </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322316 --#', false);">NIC 21 Efectos de las Variaciones en las Tasas de Cambio de la Moneda Extranjera </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322315 --#', false);">NIC 23 Costos por Pr&eacute;stamos </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322314 --#', false);">NIC 24 Informaci&oacute;n a Revelar sobre Partes Relacionadas </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322313 --#', false);">NIC 26 Contabilizaci&oacute;n e Informaci&oacute;n Financiera sobre Planes de Beneficio por Retiro </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322312 --#', false);">NIC 27 Estados Financieros Consolidados y Separados </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322311 --#', false);">NIC 28 Inversiones en Asociadas y Negocios Conjuntos </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322310 --#', false);">NIC 29 Informaci&oacute;n Financiera en Econom&iacute;as Hiperinflacionarias </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322309 --#', false);">NIC 32 Instrumentos Financieros: Presentaci&oacute;n</a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322308 --#', false);">NIC 33 Ganancias por Acci&oacute;n </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322307 --#', false);">NIC 34 Informaci&oacute;n Financiera Intermedia </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322306 --#', false);">NIC 36 Deterioro del Valor de los Activos </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322305 --#', false);">NIC 37 Provisiones, Pasivos Contingentes y Activos Contingentes </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322303 --#', false);">NIC 38 Activos Intangibles </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322302 --#', false);">NIC 39 Instrumentos Financieros: Reconocimiento y Medici&oacute;n </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322298 --#', false);">NIC 40 Propiedades de Inversi&oacute;n </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322284 --#', false);">NIC 41 Agricultura</a></li>
+									
+								
+								  </ul>
+								  <!-- sub lista END -->
+								<!-- sub lista BEGIN -->
+								  <li class="list-group-item text-left"><span class="glyphicon glyphicon-tasks text-success"></span> <a href="#2016_dos" data-toggle="collapse"   class="miBold2">NIIF 2016</a></li>
+								  <ul class="list-group collapse colorBlack" id="2016_dos">
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322435 --#', false);">NIIF 1 Adopci&oacute;n por Primera vez de las Normas Internacionales de Informaci&oacute;n Financiera </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322434 --#', false);">NIIF 2 Pagos Basados en Acciones </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322433 --#', false);">NIIF 3 Combinaciones de Negocios </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322432 --#', false);">NIIF 4 Contratos de Seguro </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322431 --#', false);">NIIF 5 Activos no Corrientes Mantenidos para la Venta y Operaciones Discontinuadas </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322430 --#', false);">NIIF 6 Exploraci&oacute;n y Evaluaci&oacute;n de Recursos Minerales </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322429 --#', false);">NIIF 7 Instrumentos Financieros: Informaci&oacute;n a Revelar </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322428 --#', false);">NIIF 8 Segmentos de Operaci&oacute;n </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322427 --#', false);">NIIF 9 Instrumentos Financieros </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322426 --#', false);">NIIF 10 Estados Financieros Consolidados </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322347 --#', false);">NIIF 11 Acuerdos Conjuntos </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322346 --#', false);">NIIF 12 Informaci&oacute;n a Revelar sobre Participaciones en Otras Entidades </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322345 --#', false);">NIIF 13 Medici&oacute;n del Valor Razonable </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322344 --#', false);">NIIF 14 Cuentas de Diferimientos de Actividades Reguladas </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322343 --#', false);">NIIF 15 Ingresos de Actividades Ordinarias Procedentes de Contratos con Clientes</a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322330 --#', false);">NIIF 16 Arrendamientos</a></li>
+
+									
+								
+								  </ul>
+								  <!-- sub lista END -->	
+								<!-- sub lista BEGIN -->
+								  <li class="list-group-item text-left"><span class="glyphicon glyphicon-tasks text-success"></span> <a href="#2016_tres" data-toggle="collapse"   class="miBold2">CINIIF 2016</a></li>
+								  <ul class="list-group collapse colorBlack" id="2016_tres">
+
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322277 --#', false);">CINIIF 1 Cambios en Pasivos Existentes por Retiro de Servicio, Restauraci&oacute;n y Similares </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322276 --#', false);">CINIIF 2 Aportaciones de Socios de Entidades Cooperativas e Instrumentos Similares </a></li>
+									<!--  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697277 --#', false);">CINIIF 4 Determinaci&oacute;n de si un Acuerdo contiene un Arrendamiento </a></li> -->
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322275 --#', false);">CINIIF 5 Derechos por la Participaci&oacute;n en Fondos para el Retiro del servicio, la Restauraci&oacute;n y la Rehabilitaci&oacute;n Medioambiental </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322274 --#', false);">CINIIF 6 Obligaciones Surgidas de la Participaci&oacute;n en Mercados Espec&iacute;ficos - Residuos de Aparatos El&eacute;ctricos y Electr&oacute;nicos </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322273 --#', false);">CINIIF 7 Aplicaci&ocaute;n del Procedimiento de Reexpresi&oacute;n seg&oacute;n la NIC 29 Informaci&oacute;n Financiera en Econom&iacute;as Hiperinflacionarias </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322272 --#', false);">CINIIF 10 Informaci&oacute;n Financiera Intermedia y Deterioro del Valor </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322270 --#', false);">CINIIF 12 Acuerdos de Concesi&oacute;n de Servicios </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322269 --#', false);">CINIIF 14 NIC 19 - El L&iacute;mite de un Activo por Beneficios Definidos, Obligaci&oacute;n de Mantener un Nivel M&iacute;nimo de Financiaci&oacute;n y su Interacci&oacute;n </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322266 --#', false);">CINIIF 16 Coberturas de una Inversi&oacute;n Neta en un Negocio en el Extranjero </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322264 --#', false);">CINIIF 17 Distribuciones, a los Propietarios, de Activos Distintos al Efectivo </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322263 --#', false);">CINIIF 19 Cancelaci&oacute;n de Pasivos Financieros con Instrumentos de Patrimonio </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322262 --#', false);">CINIIF 20 Costos de Desmonte en la Fase de Producci&oacute;n de una Mina a Cielo Abierto </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322261 --#', false);">CINIIF 21 Grav&aacute;menes</a></li>
+									
+								
+								  </ul>
+								  <!-- sub lista END -->	
+								<!-- sub lista BEGIN -->
+								  <li class="list-group-item text-left"><span class="glyphicon glyphicon-tasks text-success"></span> <a href="#2016_cuatro" data-toggle="collapse"   class="miBold2">SIC 2016</a></li>
+								  <ul class="list-group collapse colorBlack" id="2016_cuatro">
+
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322282 --#', false);">SIC 7 Introducci&oacute;n del Euro </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322281 --#', false);">SIC 10 Ayudas Gubernamentales - Sin Relaci&oacute;n Espec&iacute;fica con Actividades de Operaci&oacute;n </a></li>
+									<!-- <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697346 --#', false);">SIC 15 Arrendamientos Operativos - Incentivos </a></li> -->
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322280 --#', false);">SIC 25 Impuesto a las Ganancias - Cambios en la Situaci&oacute;n Fiscal de la Entidad o de sus Accionistas </a></li>
+									<!-- <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697349 --#', false);">SIC 27 Evaluaci&oacute;n de la Esencia de las Transacciones que Adoptan la Forma Legal de un Arrendamiento </a></li> -->
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322279 --#', false);">SIC 29 Acuerdos de Concesi&oacute;n de Servicios: Informaci&oacute;n a Revelar </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322278 --#', false);">SIC 32 Activos Intangibles - Costos de sitios web</a></li>
+									
+					
+								
+								  </ul>
+								  
+								  								  
+								  <!-- sub lista END -->	
+								
+							   </ul>
+							  <!-- sub lista END -->
+							
 							<!-- grupo nuevo cambio -->
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt text-primary"></span> <a href="#g_uno" data-toggle="collapse"   class="miBold2">NIC/NIIF versi&oacute;n 2015</a></li>
 								  <ul class="list-group collapse colorBlack" id="g_uno">							
@@ -782,9 +1019,9 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697275 --#', false);">CINIIF 1 Cambios en Pasivos Existentes por Retiro de Servicio, Restauraci&oacute;n y Similares </a></li>
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697276 --#', false);">CINIIF 2 Aportaciones de Socios de Entidades Cooperativas e Instrumentos Similares </a></li>
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697277 --#', false);">CINIIF 4 Determinaci&oacute;n de si un Acuerdo contiene un Arrendamiento </a></li>
-									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697278 --#', false);">CINIIF 5 Derechos por la Participacin en Fondos para el Retiro del servicio, la Restauracin y la Rehabilitacin Medioambiental </a></li>
-									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697279 --#', false);">CINIIF 6 Obligaciones Surgidas de la Participaci&oacute;n en Mercados Especficos - Residuos de Aparatos Elctricos y Electrnicos </a></li>
-									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697281 --#', false);">CINIIF 7 Aplicaci&ocaute;n del Procedimiento de Reexpresi&oacute;n seg&oacute;n la NIC 29 Informacin Financiera en Economas Hiperinflacionarias </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697278 --#', false);">CINIIF 5 Derechos por la Participaci&oacute;n en Fondos para el Retiro del servicio, la Restauraci&oacute;n y la Rehabilitaci&oacute;n Medioambiental </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697279 --#', false);">CINIIF 6 Obligaciones Surgidas de la Participaci&oacute;n en Mercados Espec&iacute;ficos - Residuos de Aparatos El&eacute;ctricos y Electr&oacute;nicos </a></li>
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697281 --#', false);">CINIIF 7 Aplicaci&ocaute;n del Procedimiento de Reexpresi&oacute;n seg&oacute;n la NIC 29 Informaci&oacute;n Financiera en Econom&iacute;as Hiperinflacionarias </a></li>
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697284 --#', false);">CINIIF 10 Informaci&oacute;n Financiera Intermedia y Deterioro del Valor </a></li>
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697285 --#', false);">CINIIF 12 Acuerdos de Concesi&oacute;n de Servicios </a></li>
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=697287 --#', false);">CINIIF 14 NIC 19 - El L&iacute;mite de un Activo por Beneficios Definidos, Obligaci&oacute;n de Mantener un Nivel M&iacute;nimo de Financiaci&oacute;n y su Interacci&oacute;n </a></li>
@@ -815,12 +1052,7 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 								  <!-- sub lista END -->	
 								</ul>
 
-							<!-- sub lista BEGIN -->
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt text-primary"></span> <a href="#g_tres" data-toggle="collapse"   class="miBold2"> NIC/NIIF versi&oacute;n 2016</a></li>
-							   <ul class="list-group collapse colorBlack" id="g_tres">								
-															
-							   </ul>
-							  <!-- sub lista END -->									
+																
 								
 							<!-- sub lista BEGIN -->
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt text-primary"></span> <a href="#g_dos" data-toggle="collapse"   class="miBold2">NIIF para las PYMES</a></li>
@@ -839,6 +1071,7 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1082686 --#', false);">C&oacute;digo Tributario</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=177597 --#', false);">TUO de la Ley del Impuesto a la Renta</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=180641 --#', false);">Reglamento de la Ley del Impuesto a la Renta</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1325253 --#', false);">R&eacute;gimen MYPE Tributario del Impuesto a la Renta</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=179439 --#', false);">TUO de la ley del Impuesto General a las Ventas e Impuesto Selectivo al Consumo</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=180614 --#', false);">Reglamento de la Ley del Impuesto General a las Ventas e Impuesto Selectivo al Consumo</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=199703 --#', false);">Texto del Nuevo R&eacute;gimen &Uacute;nico Simplificado</a></li>
@@ -846,6 +1079,9 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=199563 --#', false);">Ley que crea el Impuesto Temporal a los Activos Netos</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=177096 --#', false);">Reglamento del Impuesto Temporal a los Activos Netos</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1284236 --#', false);">Reglamento de Aplazamiento y/o Fraccionamiento de la Deuda Tributaria por Tributos Internos</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1324640 --#', false);">Fraccionamiento especial de deudas tributarias y otros ingresos administrados por la SUNAT</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1327977 --#', false);">Reglamento del fraccionamiento especial de deudas tributarias y otros ingresos administrados por la SUNAT (DS_49_2017_EF)</a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1329445 --#', false);">Normas para la presentaci&oacute;n de la solicitud de acogimiento al fraccionamiento especial, as&iacute; como para su pago</a><span class="label label-success">Nuevo</span></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=176192 --#', false);">Reglamento del Procedimiento de Fiscalizaci&oacute;n de la SUNAT</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=199504 --#', false);">Reglamento de Procedimiento de Cobranza Coactiva</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=199217 --#', false);">Normas referidas a Libros y Registros vinculados a asuntos tributarios</a></li>
@@ -964,12 +1200,25 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 						
 						<ul class="list-group">
 						<!-- nuevos cambios sept -->
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt text-primary"></span> <a href="#u_one" data-toggle="collapse"   class="miBold2">Jurisprudencia de observancia obligatoria del Tribunal Fiscal</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt text-primary"></span> <a href="#u_one" data-toggle="collapse"   class="miBold2">Jurisprudencia de observancia obligatoria del Tribunal Fiscal</a> <span class="label label-success">Nuevo</span></li>
 							   <ul class="list-group collapse colorBlack" id="u_one">		
+						
+												<!-- begin list -->
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#uno2017" data-toggle="collapse"   class="miBold2">2017</a> <span class="label label-success">Nuevo</span></li>
+							<ul class="list-group collapse colorBlack" id="uno2017">
+							<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1329029--#', false);">Devoluci&oacute;n (RTF 2486-4-2017) <span class="label label-success">Nuevo</span></a></li>
+							<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328720--#', false);">Prescripci&oacute;n (RTF 1447-3-2017) </a></li>
+							
+							
+						<!--	  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1315849 --#', false);">Pleno</a></li>  -->
+
+							</ul>	
+						<!-- end list -->
 						
 						<!-- begin list -->
 						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#unoc" data-toggle="collapse"   class="miBold2">2016</a></li>
 							<ul class="list-group collapse colorBlack" id="unoc">
+							<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1324610 --#', false);">Impuesto a la Renta, Multas y otros (RTF 8678-2-2016) <span class="label label-success">Nuevo</span></a></li>
 							<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323519 --#', false);">Queja (RTF 3876-Q-2016) <span class="label label-success">Nuevo</span></a></li>
 							<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323517 --#', false);">Queja (RTF 3869-Q-2016) <span class="label label-success">Nuevo</span></a></li>
 							<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323512 --#', false);">Queja (RTF 3820-Q-2016) <span class="label label-success">Nuevo</span></a></li>
@@ -1095,15 +1344,25 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 						<!-- nuevos cambios sept -->
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt text-primary"></span> <a href="#uu_tres" data-toggle="collapse"   class="miBold2">Jurisprudencia laboral reciente</a></li>
 							   <ul class="list-group collapse colorBlack" id="uu_tres">	
-							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323892 --#', false);">Pensi&oacute;n de viudez: Acreditaci&oacute;n del v&iacute;nculo de convivencia. Precedente administrativo de observancia obligatoria (Res. 1095-2016-ONP/TAP)<span class="label label-success">Nuevo</span></a></li>
-							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320687 --#', false);">Criterios para el despido en periodo de prueba (Cas. 5252-2014 Lima) <span class="label label-success">Nuevo</span></a></li>		
-							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320686 --#', false);">Supuestos de validez para la reducci&oacute;n de remuneraciones (Cas. 489-2015 Lima) <span class="label label-success">Nuevo</span></a></li>		
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328896 --#', false);">Contrato de trabajo: Exigencia de determinado nivel de eficiencia en el servicio no implica necesariamente subordinaci&oacute;n (Cas. 19738-2015-Piura)<span class="label label-success">Nuevo</span></a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328871 --#', false);">Nulidad de despido: Es nulo el despido originado por el estado de gestaci&oacute;n (Cas. 15690-2015-Lima)<span class="label label-success">Nuevo</span></a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328869 --#', false);">Reincorporaci&oacute;n: Obreros municipales están sujetos al r&eacute;gimen laboral de la actividad privada (Cas. 3766-2016-Lambayeque)<span class="label label-success">Nuevo</span></a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328868 --#', false);">Extinci&oacute;n del contrato de trabajo: Renuncia afectada de vicios no es equiparable al despido sin causa (Cas. 9019-2015-Lima)<span class="label label-success">Nuevo</span></a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328867 --#', false);">Indemnizaci&oacute;n por daños y perjuicios: Definici&oacute;n de daño moral (Cas. 7658-2016-Lima)<span class="label label-success">Nuevo</span></a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328860 --#', false);">Remuneraciones y beneficios sociales: Criterios de procedencia de la homologaci&oacute;n (Cas. 19902-2015-Cusco)<span class="label label-success">Nuevo</span></a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328858 --#', false);">Sanci&oacute;n disciplinaria: Suspensi&oacute;n debe ser proporcional y en funci&oacute;n de los antecedentes del actor (Cas. 13270-2015-Cusco)<span class="label label-success">Nuevo</span></a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328857 --#', false);">Seguridad social en salud: Oportunidad del otorgamiento de los descansos m&eacute;dicos (Cas. 4241-2016-Lima)<span class="label label-success">Nuevo</span></a></li>
+							   
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1324394 --#', false);">Prescripci&oacute;n de la potestad disciplinaria en el marco de la Ley 30057: Precedente administrativos de observancia obligatoria (RES. 1-2016-SERVIR/TSC)</a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323892 --#', false);">Pensi&oacute;n de viudez: Acreditaci&oacute;n del v&iacute;nculo de convivencia. Precedente administrativo de observancia obligatoria (Res. 1095-2016-ONP/TAP)</a></li>
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320687 --#', false);">Criterios para el despido en periodo de prueba (Cas. 5252-2014 Lima) </a></li>		
+							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320686 --#', false);">Supuestos de validez para la reducci&oacute;n de remuneraciones (Cas. 489-2015 Lima) </a></li>		
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320594 --#', false);">No procede otorgar remuneraciones devengadas en procesos de amparo (Cas. 15959-2013 Hu&uacute;nuco)</a></li>		
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320595 --#', false);">Duda razonable y aplicaci&oacute;n del principio de favorecimiento del proceso (Cas. 13637-2013 Huancavelica)</a></li>
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320596 --#', false);">Protecci&oacute;n legal de servidores p&uacute;blicos bajo el amparo de la Ley Nro 24041 (Cas. 14909-2013 Ayacucho)</a></li>		
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320597 --#', false);">Solicitar beneficios distintos en diferentes instancias no ocasiona improcedencia de una demanda (Cas. 148-2014 Piura)</a></li>		
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320598 --#', false);">Trabajadores amparados por la Ley Nro 24041 (Cas. 2048-2015 Loreto)</a></li>		
-									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320599 --#', false);">Protecci&oacute;n de servidor administrativo por desempe&ntilde;ar labores permanentes por m&aacute;s de un año (Cas. 4945-2014 Ica)</a></li>		
+									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320599 --#', false);">Protecci&oacute;n de servidor administrativo por desempe&ntilde;ar labores permanentes por m&aacute;s de un a&nacute;o (Cas. 4945-2014 Ica)</a></li>		
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320600 --#', false);">Contrato CAS no surte efectos en servidor amparado por la Ley Nro 24041 (Cas. 7089-2014 Lambayeque)</a></li>		
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320601 --#', false);">Rebaja de remuneraci&oacute;n genera da&ntilde;o moral indemnizable (Cas. 7204-2014 Arequipa)</a></li>		
 									<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320602 --#', false);">Rol protag&oacute;nico de juez en un proceso contencioso administrativo (Cas. 11550-2014 Arequipa)</a></li>		
@@ -1130,8 +1389,41 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 				<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 				  <div class="panel-body">
 						<ul class="list-group">
-						<!-- <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#uno_q" data-toggle="collapse"   class="miBold2">2016</a></li>
-							<ul class="list-group collapse colorBlack" id="uno_q"> -->
+						
+						<li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#uno_2017" data-toggle="collapse"   class="miBold2">2017 </a><span class="label label-success"> Nuevo</span></li>
+							<ul class="list-group collapse colorBlack" id="uno_2017">
+							<!-- begin list -->
+						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt  text-success"></span> <a href="#uno2017Pronunciamiento" data-toggle="collapse"   class="miBold2">INFORMES</a></li>
+							<ul class="list-group collapse colorBlack" id="uno2017Pronunciamiento">
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328819--#', false);">Aporte al ESSALUD: Asignaci&oacute;n escolar otorgada por convenio colectivo (INFORME 031-2017-SUNAT)</a> </li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328194 --#', false);">C&oacute;digo Tributario &#150; Gradualidad (INFORME 016-2017-SUNAT)</a> </li>
+
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1329787 --#', false);">Comprobantes de Pago: Emisión. IGV: Afectación al impuesto. Renta: Ingresos por juego de apuestas (INFORME 002-2017- SUNAT)</a><span class="label label-success"> Nuevo</span></li>
+
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1327902 --#', false);">Comprobantes de Pago: Gu&iacute;a de Remisi&oacute;n (INFORME 006-2017-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1327903 --#', false);">Comprobantes de Pago: Traslados exceptuados de ser sustentados con gu&iacute;as de remisi&oacute;n (INFORME 012-2017-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1328818 --#', false);">IR &#150; Beneficios Tributarios &#150; CETICOS (INFORME 007-2017-SUNAT) </a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1329030 --#', false);">IR &#150; Deducci&oacute;n de gastos por operaciones con empresas del sistema financiero (INFORME 027-2017-SUNAT)</a></li>
+
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1329789 --#', false);">IR - CINIIF 12 y reconocimiento de ingresos (INFORME 038-2017- SUNAT)</a><span class="label label-success"> Nuevo</span></li>
+
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1327742 --#', false);">IR &#150; Deducci&oacute;n del beneficio establecido en la Ley Nro. 30309, relacionado a gastos en proyectos de I+D+i. (INFORME 008-2017-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326892 --#', false);">IR &#150; Gastos deducibles (INFORME 004-2017-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326864 --#', false);">IR &#150; Gastos deducibles (INFORME 005-2017-SUNAT)</a></li>
+							
+							<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1329790 --#', false);">IR- Ley N.° 30309, Ley que promueve la investigación científica, desarrollo tecnológico e innovación tecnológica (INFORME 020-2017- SUNAT)</a><span class="label label-success"> Nuevo</span></li>
+
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1327004 --#', false);">IR &#150; Retenciones del Impuesto a la Renta a no domiciliados. C&oacute;digo Tributario: Infracciones (INFORME 001-2017-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326891 --#', false);">R&eacute;gimen de Retenci&oacute;n del Impuesto a la Renta (INFORME 003-2017-SUNAT)</a></li>
+
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1329788 --#', false);">SPOT – Servicio accesorio de dimensionamiento de fierro (INFORME 019-2017- SUNAT)</a><span class="label label-success"> Nuevo</span></li>
+
+							</ul>	
+						<!-- end list -->	
+							</ul>
+						
+						<li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt"></span> <a href="#uno_q" data-toggle="collapse"   class="miBold2">2016</a></li>
+							<ul class="list-group collapse colorBlack" id="uno_q">
 						
 						<!-- begin list -->
 						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt  text-success"></span> <a href="#unox" data-toggle="collapse"   class="miBold2">CARTAS</a></li>
@@ -1159,60 +1451,24 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 						<!-- begin list -->
 						  <li class="list-group-item text-left"><span class="glyphicon glyphicon-list-alt  text-success"></span> <a href="#tresx" data-toggle="collapse"   class="miBold2">INFORMES</a></li>
 							<ul class="list-group collapse colorBlack" id="tresx">
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317203 --#', false);">Amazon&iacute;a &#150;  Beneficios tributarios (INFORME 007-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320863 --#', false);">Bancarizaci&oacute;n de operaciones realizadas por sujetos no domiciliados en el pa&iacute;s (INFORME 124-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320870 --#', false);">C&oacute;digo Tributario &#150; Actualizaci&oacute;n de carta fianza (INFORME 138-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317222 --#', false);">C&oacute;digo Tributario &#150;	 Aplicaci&oacute;n de la multa correspondiente a la infracci&oacute;n tipificada en el num. 1 del art. 178 del CT (INFORME 037-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317230 --#', false);">C&oacute;digo Tributario &#150;	 Aplicaci&oacute;n de saldos procedentes de ejecuci&oacute;n de garant&iacute;as (INFORME 053-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317204 --#', false);">C&oacute;digo Tributario &#150; Bienes embargables (INFORME 010-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317251 --#', false);">C&oacute;digo Tributario &#150; Comiso de bienes (INFORME 094-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318833 --#', false);">C&oacute;digo Tributario &#150; Determinaci&oacute;n de la deuda sobre base presunta (INFORME 117-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317221 --#', false);">C&oacute;digo Tributario &#150; Determinaci&oacute;n de la multa correspondiente a la infracci&oacute;n tipificada en el num. 1 del art. 178 del CT (INFORME 036-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317228 --#', false);">C&oacute;digo Tributario &#150; Embargo y ejecuci&oacute;n de bien inmueble de propiedad de una asociaci&oacute;n (INFORME 049-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317257 --#', false);">C&oacute;digo Tributario &#150; Facultad de Fiscalizaci&oacute;n (INFORME 104-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320873 --#', false);">C&oacute;digo Tributario &#150; Fiscalizaci&oacute;n (INFORME 147-2016-SUNAT) </a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317206 --#', false);">C&oacute;digo Tributario &#150; Infracci&oacute;n tipificada en el num. 1 del art. 178. Rectificaci&oacute;n de p&eacute;rdidas (INFORME 014-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317229 --#', false);">C&oacute;digo Tributario &#150; P&eacute;rdida de fraccionamiento y-o aplazamiento (INFORME 052-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317238 --#', false);">C&oacute;digo Tributario &#150; Prescripci&oacute;n (INFORME 072-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317211 --#', false);">C&oacute;digo Tributario &#150; Solicitudes de devoluci&oacute;n - Recursos impugnatorios (INFORME 019-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322080 --#', false);">C&oacute;digo Tributario &#150; Sucesi&oacute;n procesal (INFORME 151-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-  							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322102 --#', false);">C&oacute;digo Tributario &#150; Sucesi&oacute;n procesal (INFORME 155-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317249 --#', false);">C&oacute;digo Tributario &#150; Suspensi&oacute;n de plazos de prescripci&oacute;n de la acci&oacute;n para exigir el pago de la obligaci&oacute;n tributaria (INFORME 087-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317232 --#', false);">C&oacute;digo Tributario y Comprobantes de pago &#150; Gu&iacute;a de remisi&oacute;n transportista (INFORME 058-2016-SUNAT)</a></li>
+
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1324611 --#', false);">C&oacute;digo Tributario - Renovaci&oacute;n de carta fianza (INFORME 188-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326586 --#', false);">C&oacute;digo Tributario - Renovaci&oacute;n de carta fianza (INFORME 203-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322105 --#', false);">Comprobantes de pago &#150; Consignaci&oacute;n de n&uacute;mero de placa de veh&iacute;culos (INFORME 163-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317205 --#', false);">Comprobantes de pago &#150; Contratos de Consorcio (INFORME 012-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317231 --#', false);">Comprobantes de pago &#150; Emisi&oacute;n electr&oacute;nica (INFORME 057-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317213 --#', false);">Comprobantes de pago &#150; Formulario 820 (INFORME 025-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320869 --#', false);">Comprobantes de pago: liquidaciones de compra emitidas en las actividades de pequeña miner&iacute;a y miner&iacute;a artesanal (INFORME 137-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317233 --#', false);">Comprobantes de pago &#150; Porcentaje adicional a cargo del MTC a favor de OSITRAN (INFORME 061-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317208 --#', false);">Comprobantes de pago &#150; Servicios prestados por sujetos no domiciliados (INFORME 016-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317248 --#', false);">Comprobantes de pago &#150; Sujetos obligados a su emisi&oacute;n (INFORME 086-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317223 --#', false);">Comprobantes de pago &#150; Transporte nacional de pasajeros (INFORME 039-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317236 --#', false);">Comprobantes de pago electr&oacute;nicos &#150; Requisitos de la factura electr&oacute;nica (INFORME 065-2016-SUNAT)</a></li>
-							   <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322103 --#', false);">Contratos de consorcio &#150; Comunicaci&oacute;n para no llevar contabilidad independiente (INFORME 156-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317216 --#', false);">IGV &#150; Base imponible en la prestaci&oacute;n de servicios notariales (INFORME 030-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318838 --#', false);">IGV &#150; Base imponible y retiro de bienes (INFORME 119-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317255 --#', false);">IGV &#150; Exportaci&oacute;n de servicios (INFORME 101-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320865 --#', false);">IGV &#150; Exportaci&oacute;n de Servicios-Reaseguros (INFORME 130-2016-SUNAT)</a></li>
+							  
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320869 --#', false);">Comprobantes de pago: liquidaciones de compra emitidas en las actividades de peque&nacute;a miner&iacute;a y miner&iacute;a artesanal (INFORME 137-2016-SUNAT)</a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323559 --#', false);">IGV &#150; Mecanismo de Compensaci&oacute;n de la Tarifa El&eacute;ctrica Residencial (INFORME 172-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318835 --#', false);">IGV &#150; Nacimiento de la obligaci&oacute;n tributaria (INFORME 107-2016-SUNAT</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317224 --#', false);">IGV &#150; Operaciones gravadas - Vales de consumo (INFORME 040-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317240 --#', false);">IGV &#150; Prestaci&oacute;n de servicios (INFORME 076-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317200 --#', false);">IGV &#150; Prorrata del Cr&eacute;dito Fiscal (INFORME 001-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317235 --#', false);">IGV &#150; R&eacute;gimen Especial de Recuperaci&oacute;n Anticipada (INFORME 064-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317225 --#', false);">IGV &#150; Servicios complementarios portuarios (INFORME 044-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317226 --#', false);">IGV &#150; Transporte terrestre internacional de pasajeros (INFORME 045-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317207 --#', false);">IGV &#150; Tratamiento del recargo FISE por el distribuidor mayorista (INFORME 015-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317243 --#', false);">IR &#150; Actividades realizadas por Fondos de Inversi&oacute;n Empresarial (INFORME 080-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317247 --#', false);">IR &#150; Afectaci&oacute;n al Impuesto &#150; Deducci&oacute;n de costos &#150; depreciaci&oacute;n (INFORME 085-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317212 --#', false);">IR &#150; Afectaci&oacute;n de la asignaci&oacute;n por desempe&ntilde;o de la funci&oacute;n congresal (INFORME 021-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317202 --#', false);">IR &#150; Asistencia T&eacute;cnica - (INFORME 004-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320867 --#', false);">IR &#150; C&aacute;lculo de la gratificaci&oacute;n ordinaria cuando se percibe remuneraci&oacute;n imprecisa (INFORME 133-2016-SUNAT) </a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318834 --#', false);">IR &#150; Condici&oacute;n de domiciliado (INFORME 098-2016-SUNAT)</a></li>
+							  
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326587 --#', false);">IGV &#150; Operaciones exoneradas (INFORME 204-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
+							  
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326166 --#', false);">IR &#150; Amortizaci&oacute;n del activo intangible que se genera por el derecho de uso que se otorga a un concesionario respecto de los bienes de una concesi&oacute;n (INFORME 186-2016-SUNAT)</a></li>
+							  
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323492 --#', false);">IR &#150; Convenios para evitar la Doble Imposici&oacute;n (CDI) (INFORME 167-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317254 --#', false);">IR &#150; Cr&eacute;dito contra el impuesto – Decreto Legislativo 882 (INFORME 100-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317218 --#', false);">IR &#150; Cr&eacute;dito tributario por reinversi&oacute;n – Ley Universitaria (INFORME 032-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317220 --#', false);">IR &#150; Cr&eacute;dito Tributario por Reinversi&oacute;n de las Universidades (INFORME 035-2016-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317254 --#', false);">IR &#150; Cr&eacute;dito contra el impuesto &#150; Decreto Legislativo 882 (INFORME 100-2016-SUNAT)</a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320872 --#', false);">IR &#150; Declaraci&oacute;n de los donantes de las donaciones efectuadas (INFORME 140-2016-SUNAT) </a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320864 --#', false);">IR &#150; Deducci&oacute;n de gastos de sucursales domiciliadas en el pa&iacute;s (INFORME 127-2016-SUNAT) </a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323490 --#', false);">IR &#150; Deducci&oacute;n de intereses cobrados por colocaci&oacute;n de letras (INFORME 175-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
@@ -1220,22 +1476,21 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1324393 --#', false);">IR &#150; Deducci&oacute;n del Beneficio por los gastos en proyectos de investigaci&oacute;n (INFORME 170-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318839 --#', false);">IR &#150; Deducibilidad de la depreciaci&oacute;n anotada en una cuenta de orden (INFORME 120-2016-SUNAT)</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317239 --#', false);">IR &#150; Determinaci&oacute;n de la renta neta de fuente extranjera (INFORME 074-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317253 --#', false);">IR &#150; Determinaci&oacute;n de la retribuci&oacute;n derivada de Acuerdos de No Competencia y tasa aplicable (INFORME 096-2016-SUNAT)</a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317245 --#', false);">IR &#150; Determinaci&oacute;n del coeficiente para el c&aacute;lculo de los pagos a cuenta del Impuesto a la Renta (INFORME 083-2016-SUNAT)</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317246 --#', false);">IR &#150; Diferencias de cambio (INFORME 084-2016-SUNAT)</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317241 --#', false);">IR &#150; Dividendos presuntos (INFORME 078-2016-SUNAT)</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323121 --#', false);">IR &#150; Enajenaci&oacute;n de casa habitaci&oacute;n (INFORME 166-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317256 --#', false);">IR &#150; Enajenaci&oacute;n directa e indirecta de acciones y participaciones representativas de capital de personas jur&iacute;dicas (INFORME 102-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317219 --#', false);">IR &#150; Estabilidad Tributaria (INFORME 033-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318836 --#', false);">IR &#150; Fideicomisos de Titulizaci&oacute;n (INFORME 109-2016-SUNAT)</a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322526 --#', false);">IR &#150; Ganancia de capital en procesos de adquisici&oacute;n de inmuebles regulados por el D.Leg. 1192 (INFORME 164-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317242 --#', false);">IR &#150; Gastos preoperativos (INFORME 079-2016-SUNAT)</a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323545 --#', false);">IR &#150; Gastos preoperativos en empresas inmobiliarias (INFORME 173-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317217 --#', false);">IR &#150; IGV &#150; Adjudicaci&oacute;n bien mueble por titular de una EIRL en liquidaci&oacute;n (INFORME 031-2016-SUNAT)</a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318837 --#', false);">IR &#150; Inafectaci&oacute;n de indemnizaci&oacute;n laboral por mandato judicial (INFORME 113-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317250 --#', false);">IR &#150; Ingresos propios de las Instituciones Educativas P&uacute;blicas previstos en el D.S. 028-2007-ED (INFORME 088-2016-SUNAT)</a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323120 --#', false);">IR &#150; Obligaci&oacute;n de efectuar retenciones en el caso de dividendos por adquisici&oacute;n de acciones bajo programas de ADRs/GDRs, percibidos por fondos (INFORME 165-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317227 --#', false);">IR  Principio de reciprocidad &#150; inc. d) del art. 48 de la LIR (INFORME 048-2016-SUNAT)</a></li>
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320868 --#', false);">IR &#150; Recargo al Consumo &#150; Valor de mercado (INFORME 134-2016-SUNAT) </a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320871 --#', false);">IR &#150; Remuneraciones de accionistas y otros consideradas dividendos (INFORME 139-2016-SUNAT) </a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1320862 --#', false);">IR &#150; Renovaci&oacute;n de deudas incobrables (INFORME 121-2016-SUNAT) </a></li>
@@ -1244,30 +1499,177 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1322101 --#', false);">IR &#150; Retenciones del Impuesto a la Renta a no domiciliados (INFORME 152-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317244 --#', false);">IR &#150; Retribuci&oacute;n econ&oacute;mica otorgada a los beneficiarios de las becas para la repatriaci&oacute;n de investigadores peruanos (INFORME 082-2016-SUNAT)</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317237 --#', false);">IR &#150; Sentido y alcance de expresi&oacute;n utilizada en el Convenio suscrito entre Per&uacute; y la Confederaci&oacute;n Suiza (INFORME 070-2016-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326584 --#', false);">IR – Sujeto no domiciliado. C&oacute;digo Tributario: Pago indebido (INFORME 192-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317209 --#', false);">IR &#150; Sustentaci&oacute;n del costo de adquisici&oacute;n o construcci&oacute;n de bienes depreciables con comprobantes de pago para la deducci&oacute;n (INFORME 017-2016-SUNAT)</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323122 --#', false);">IR &#150; Valor de mercado en la enajenaci&oacute;n de acciones que cotizan en bolsa, fuera de un mecanismo centralizado de negociaci&oacute;n (INFORME 169-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318840 --#', false);">ISC &#150; Antracita para uso energ&eacute;tico (INFORME 123-2016-SUNAT)</a></li>
-							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323485 --#', false);">ISC &#150; Venta de carbón de antracita (INFORME 174-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1323485 --#', false);">ISC &#150; Venta de carb&oacute;n de antracita (INFORME 174-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326585 --#', false);">ITAN &#150; Inicio de operaciones productivas (INFORME 199-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317252 --#', false);">Ley 30230 &#150; Actualizaci&oacute;n excepcional de las deudas tributarias (INFORME 095-2016-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326319 --#', false);">Ley de garant&iacute;a mobiliaria - Venta Extrajudicial - Comprobantes de Pago - Impuesto a la Renta (INFORME 190-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317214 --#', false);">Ley de Promoci&oacute;n del Sector Agrario – Actividades Agroindustriales (INFORME 027-2016-SUNAT)</a></li>
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326330 --#', false);">Ley de Promoci&oacute;n de la Inversi&oacute;n en la Amazon&iacute;a (INFORME 196-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
+							  <!--
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317234 --#', false);">Libros y Registros Electr&oacute;nicos (INFORME 062-2016-SUNAT)</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317201 --#', false);">OTROS &#150; Factura Negociable (INFORME 002-2016-SUNAT)</a></li>
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1317215 --#', false);">SPOT &#150; Contratos de construcci&oacute;n (INFORME 029-2016-SUNAT)</a></li>
+
+							  -->
+							  
 							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318841 --#', false);">SPOT &#150; Cr&eacute;dito Fiscal (INFORME 118-2016-SUNAT)</a></li>
-					
+							  <li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span><a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1326583 --#', false);">SPOT &#150; SPOT - Extorno y liberaci&oacute;n de fondos (INFORME 184-2016-SUNAT)<span class="label label-success">Nuevo</span></a></li>
 
 
 							</ul>	
 						<!-- end list -->	
   
 
-						<!-- </ul> -->
+						</ul> 
 
 						
 						</ul>						
 				  </div>
 				</div>
 			  </div>
+			  
+						
+					<!-- ////// Ini: SERVIR /////-->
+						<div class="panel panel-default">
+							
+							<!-- ******** header *********  -->
+							<div class="panel-heading" role="tab" id="heading30">
+							  <h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse30" aria-expanded="true" aria-controls="collapse30">
+									Vencimientos tributarios
+								</a>
+							  </h4>
+							</div>
+							<!-- ******** body *********  -->						
+							<div id="collapse30" class="panel-collapse collapse " role="tabpanel" aria-labelledby="heading30">
+								<div class="panel-body">
+							  
+									<!-- ************ contenido ************ -->
+									<ul class="list-group">				
+									 
+										<li class="list-group-item text-left">
+											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
+											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/VENCIMIENTOS_DE_TRIBUTOS_MUNICIPALES.pdf"  >Vencimiento de Tributos Municipales</a>
+										</li>
+							<!--			<li class="list-group-item text-left">
+											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
+											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONOGRAMA_DE_PRECIOS_DE_TRANSFERENCIA.pdf"  >Cronograma de Precios de Transferencia</a>
+										</li>
+							-->
+										<li class="list-group-item text-left">
+											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
+											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONOGRAMA_DE_LA_DAOT.pdf"  >Cronograma de la DAOT</a>
+										</li>
+										<li class="list-group-item text-left">
+											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
+											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONCRONOGRAMA_PARA_EL_PAGO_DEL_ITF.pdf"  >Cronograma para el pago del ITF</a>
+										</li>
+										<li class="list-group-item text-left">
+											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
+											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONOGRAMA_DE_OBLIGACIONES_LABORALES.pdf"  >Cronograma de obligaciones laborales</a>
+										</li>
+										<li class="list-group-item text-left">
+											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
+											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/CRONOGRAMA_DE_OBLIGACIONES_MENSUALES.pdf"  >Cronograma de obligaciones mensuales</a>
+										</li>
+										<li class="list-group-item text-left">
+											<span class="glyphicon glyphicon-object-align-bottom  text-primary"></span> 
+											<a  target="_blank" href="http://www.contadoresyempresas.com.pe/InfoWebContaPDF/PLAZO_MaXIMO_DE_PRESENTACIoN_DE_LOS_ESTADOS_FINANCIEROS_INTERMEDIOS.pdf"  >Plazo m&aacute;ximo de presentaci&oacute;n de los estados financieros intermedios</a>
+										</li>
+										<!--	
+										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
+										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1310686 --#', false);"></a></li>
+										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
+										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1311416 --#', false);"></a></li>
+										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
+										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1316323 --#', false);"></a></li>
+										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
+										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1313152 --#', false);"></a></li>
+										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
+										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318520 --#', false);"></a></li>
+										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
+										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318520 --#', false);"></a></li>
+										<li class="list-group-item text-left"><span class="glyphicon glyphicon-file text-primary"></span>
+										<a href="#" data-toggle="modal" data-target="#myModal" onclick="javascript:ShowResumenMonth('#!-- #id=1318520 --#', false);"></a></li>
+										-->
+													
+									  
+									</ul>
+									
+								</div>
+							  
+							</div>
+						</div>
+						<!-- ////// Fin: SERVIR /////-->
+			  
+				
+						<!-- ////// Ini: indicadores /////-->
+						<div class="panel panel-default" >
+							
+							<!-- ******** header *********  -->
+							<div class="panel-heading" role="tab" id="headingOne1">
+							  <h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+									Tipo de cambio
+								</a>
+							  </h4>
+							</div>
+							<!-- ******** body *********  -->						
+							<div id="collapseOne1" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne1">
+								<div class="panel-body">							  
+									<!-- ************ contenido ************ -->
+									
+									<ul class="list-group">													 
+										<!-- ini: 1 -->
+										<li class="list-group-item text-left">
+											<div class="row" style="margin-bottom: 8px;text-align: left;">
+											<span>&nbsp;&nbsp;&nbsp;Tipo de Cambio</span>
+											
+											<hr style="border: 1px dotted #dddddd;margin-top:4px;margin-bottom:5px;  ">
+											<span id="titcambio"> </span><br/>
+												<div class="col-xs-12">
+													<div class="row">
+														<div class="col-xs-3"><h4 style="color: green">Dolar: </h4></div>
+														<div class="col-xs-4"><h4 id="zdolarc"><h4></div>
+														<div class="col-xs-5"><h4 id="zdolarv"><h4></div>
+													</div>
+													
+												</div>
+												<div class="col-xs-12">
+													<div class="row">
+														<div class="col-xs-3"><h4 style="color: #FF4289">Euro: </h4></div>
+														<div class="col-xs-4"><h4 id="zeuroc"><h4></div>
+														<div class="col-xs-5"><h4 id="zeurov"><h4></div>
+													</div>
+													
+												</div>
+
+											</div>
+
+										</li>
+										
+
+									</ul>
+								</div>
+							</div>
+
+						</div>						
+						<!-- ////// Fin: indicadores /////-->
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
 			</div>
 
 						
@@ -1311,6 +1713,7 @@ txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
         <h4 class="modal-title" id="myModalLabel">Titulo Normal</h4>  -->
       </div> 
       <div class="modal-body scrollNext" >
+		
 			<iframe style="height:15040px; width:auto; margin-top: 11px; overflow-y: auto;" id="myIframe" name="myIframe"  src="about:blank" marginheight="20" marginwidth="10" frameborder="0" ></iframe>
       </div>
       <!--<div class="modal-footer">
